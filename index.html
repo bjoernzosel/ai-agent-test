@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jane Smith | Web Designer</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --text-color: #1f2937;
+            --background-color: #ffffff;
+            --accent-color: #dbeafe;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        header {
+            padding: 2rem;
+            background-color: var(--accent-color);
+            text-align: center;
+        }
+
+        nav {
+            padding: 1rem;
+            background-color: var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            border-radius: 8px;
+            background-color: var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Jane Smith</h2>
+        <p>Web Designer & Developer</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Creating Beautiful Digital Experiences</h1>
+        <p>Transforming ideas into elegant, functional websites</p>
+    </section>
+
+    <main class="container">
+        <section id="services">
+            <h2>My Services</h2>
+            <div class="services">
+                <div class="service-card">
+                    <h3>Web Design</h3>
+                    <p>Creating beautiful, intuitive designs that engage your audience</p>
+                </div>
+                <div class="service-card">
+                    <h3>Development</h3>
+                    <p>Building responsive, fast-loading websites with modern technologies</p>
+                </div>
+                <div class="service-card">
+                    <h3>UX/UI Design</h3>
+                    <p>Crafting user-centered experiences that drive results</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Jane Smith. All rights reserved.</p>
+    </footer>
+</body>
+</html>
