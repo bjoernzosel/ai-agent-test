@@ -34,6 +34,9 @@
         nav {
             padding: 1rem;
             background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         nav ul {
@@ -50,8 +53,24 @@
         }
 
         .hero {
-            padding: 4rem 2rem;
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-color);
+        }
+
+        .hero-content {
             text-align: center;
+            z-index: 1;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
         }
 
         .hero h1 {
@@ -91,6 +110,22 @@
             padding: 2rem;
             margin-top: 4rem;
         }
+
+        .parallax-dots {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .dot {
+            position: absolute;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.2;
+        }
     </style>
 </head>
 <body>
@@ -108,9 +143,12 @@
         </ul>
     </nav>
 
-    <section class="hero">
-        <h1>Creating Beautiful Digital Experiences</h1>
-        <p>Transforming ideas into elegant, functional websites</p>
+    <section class="hero" id="home">
+        <div class="parallax-dots"></div>
+        <div class="hero-content">
+            <h1>Creating Beautiful Digital Experiences</h1>
+            <p>Transforming ideas into elegant, functional websites</p>
+        </div>
     </section>
 
     <main class="container">
@@ -136,5 +174,58 @@
     <footer>
         <p>&copy; 2024 Jane Smith. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Create animated dots background
+        const dotsContainer = document.querySelector('.parallax-dots');
+        const numberOfDots = 50;
+
+        for (let i = 0; i < numberOfDots; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            
+            // Random size between 10 and 50 pixels
+            const size = Math.random() * 40 + 10;
+            dot.style.width = `${size}px`;
+            dot.style.height = `${size}px`;
+            
+            // Random position
+            dot.style.left = `${Math.random() * 100}%`;
+            dot.style.top = `${Math.random() * 100}%`;
+            
+            dotsContainer.appendChild(dot);
+        }
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const heroContent = document.querySelector('.hero-content');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (scrolled < hero.offsetHeight) {
+                heroContent.style.transform = `translateY(${scrolled * 0.4}px)`;
+                
+                dots.forEach((dot, index) => {
+                    const speed = 0.2 + (index % 3) * 0.1;
+                    dot.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
